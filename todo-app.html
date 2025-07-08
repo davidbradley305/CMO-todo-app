@@ -43,6 +43,20 @@
 
         });
     </script>
-	
+	<script>
+	$.ajax({
+    url: ' https://jsonplaceholder.typicode.com/todos',
+    method: 'GET',
+    success: function(response) {
+        // Handle the API response here
+        console.log(response);
+    },
+    error: function(xhr, status, error) {
+        // Handle errors here
+        console.error(status, error);
+    }
+});
+	</script>
+<div class="container mt-3"><a href="https://github.com/davidbradley305/CMO-todo-app/tree/main">Git Hub Repo</a></div>
 </body>
 </html>
