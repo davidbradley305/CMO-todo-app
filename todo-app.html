@@ -50,14 +50,16 @@
 		success: function(response) {
         // Handle the API response here
          console.log(response);
-		 var trHTML = '';
-          $.each(response, function (key,value) {
-             trHTML += 
-                '<tr><td>' + value.id + 
-                '</td><td>' + value.title + 
-                '</td><td>' + value.completed +
-                '</td></tr>';     
-          });
+		var trHTML = '';
+
+        $.each(response, function (i, item)
+        {   
+            trHTML += 
+            '<tr><td>' + item.id + 
+            '</td><td>' + item.title + 
+            '</td><td>' + item.completed + 
+            '</td></tr>';            
+        });
 		  $('#dataTable').append(trHTML);
 		},
 		error: function(xhr, status, error) {
