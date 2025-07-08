@@ -36,26 +36,36 @@
     <!-- Include any other third-party JS -->
 
     <script>
-        $(document).ready(function() {
-    
+        $(document).ready(function(){
             // Function to fetch data and populate the table
             // This can be in a separate file or embedded here
-
-        });
+			getToDoJson();
+		});	
     </script>
 	<script>
-	$.ajax({
-    url: ' https://jsonplaceholder.typicode.com/todos',
-    method: 'GET',
-    success: function(response) {
+	function getToDoJson(){
+	 $.ajax({
+     url: ' https://jsonplaceholder.typicode.com/todos',
+     method: 'GET',
+		success: function(response) {
         // Handle the API response here
-        console.log(response);
-    },
-    error: function(xhr, status, error) {
+         console.log(response);
+		 var trHTML = '';
+          $.each(response, function (key,value) {
+             trHTML += 
+                '<tr><td>' + value.id + 
+                '</td><td>' + value.title + 
+                '</td><td>' + value.completed +
+                '</td></tr>';     
+          });
+		  $('#dataTable').append(trHTML);
+		},
+		error: function(xhr, status, error) {
         // Handle errors here
-        console.error(status, error);
-    }
-});
+         console.error(status, error);
+		}
+		});
+	};
 	</script>
 <div class="container mt-3"><a href="https://github.com/davidbradley305/CMO-todo-app/tree/main">Git Hub Repo</a></div>
 </body>
